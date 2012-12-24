@@ -74,7 +74,20 @@ public class BoardView extends JPanel implements MouseListener,
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 
-		
+		if(!shiftingVertical && !shiftingHorizontal) {
+			
+			if(Math.abs(arg0.getX() - oldPosX) > Math.abs(arg0.getY() - oldPosY)) {
+				
+				shiftingHorizontal = true;
+				
+			} else {
+				
+				shiftingVertical = true;
+			}
+			
+		} else {
+			
+		}
 		
 		moveRow(0, arg0.getX() - oldPosX);
 
@@ -123,7 +136,9 @@ public class BoardView extends JPanel implements MouseListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
+		shiftingHorizontal = false;
+		shiftingVertical = false;
 
 	}
 

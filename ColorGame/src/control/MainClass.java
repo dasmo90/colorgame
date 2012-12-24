@@ -2,8 +2,10 @@ package control;
 
 import java.awt.Color;
 
+import view.MainView;
+
+
 import model.Board;
-import model.MainView;
 
 public class MainClass {
 

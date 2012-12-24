@@ -1,11 +1,11 @@
-package model;
+package view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 
-import view.BoardView;
+import model.Board;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
