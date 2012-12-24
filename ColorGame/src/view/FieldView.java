@@ -49,8 +49,31 @@ public class FieldView extends JPanel {
 
 		int halfSizeX = this.getWidth()/2;
 		int halfSizeY = this.getHeight()/2;
-	
-		this.setBounds((oldX + x) % maxX, (oldY + y) % maxY, oldWidth, oldHeight);
+		
+		int newX = (oldX + x) % maxX;
+		
+		if(oldX + x > maxX - halfSizeX) {
+			
+			newX = (oldX + x + halfSizeX) % maxX - halfSizeX;
+			
+		} else if(oldX + x < halfSizeX) {
+
+			newX = (oldX + x + halfSizeX + maxX) % maxX - halfSizeX;
+		}
+		
+
+		int newY = (oldY + y) % maxY;
+
+		if(oldY + y > maxY - halfSizeY) {
+			
+			newY = (oldY + y + halfSizeY) % maxY - halfSizeY;
+			
+		} else if(oldY + x < halfSizeY) {
+
+			newY = (oldY + y + halfSizeY + maxY) % maxY - halfSizeY;
+		}
+		
+		this.setBounds(newX, newY, oldWidth, oldHeight);
 	}
 
 }

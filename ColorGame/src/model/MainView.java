@@ -19,7 +19,7 @@ public class MainView extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setLayout(new FlowLayout());
 		
-		BoardView boardView = new BoardView(board, new Dimension(200,200));
+		BoardView boardView = new BoardView(board, new Dimension(300,300));
 		this.add(boardView);
 		
 		this.setVisible(true);
