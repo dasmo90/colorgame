@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import view.MainView;
 
-
 import model.Board;
 
 public class MainClass {

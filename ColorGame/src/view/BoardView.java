@@ -48,7 +48,8 @@ public class BoardView extends JPanel implements MouseListener,
 
 		for (int i = 0; i < board.getDimension().width; i++) {
 
-			fieldViews[i][j].setPosTemp(l, 0, this.getWidth(), this.getHeight());
+			fieldViews[i][j]
+					.setPosTemp(l, 0, this.getWidth(), this.getHeight());
 		}
 
 	}
@@ -68,28 +69,38 @@ public class BoardView extends JPanel implements MouseListener,
 
 	private boolean shiftingVertical = false;
 	private boolean shiftingHorizontal = false;
-	
-	private boolean shiftingIndex;
-	
+
+	private int shiftingIndex;
+
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 
-		if(!shiftingVertical && !shiftingHorizontal) {
-			
-			if(Math.abs(arg0.getX() - oldPosX) > Math.abs(arg0.getY() - oldPosY)) {
-				
+		if (!shiftingVertical && !shiftingHorizontal) {
+
+			if (Math.abs(arg0.getX() - oldPosX) > Math.abs(arg0.getY()
+					- oldPosY)) {
+
 				shiftingHorizontal = true;
-				
+				shiftingIndex = (int) ((double) oldPosY / this.getHeight() * board
+						.getDimension().height);
+
 			} else {
-				
+
 				shiftingVertical = true;
 			}
-			
+
 		} else {
-			
+
+			if (shiftingHorizontal) {
+
+				moveRow(shiftingIndex, arg0.getX() - oldPosX);
+				
+			} else {
+
+			}
+
 		}
-		
-		moveRow(0, arg0.getX() - oldPosX);
+
 
 	}
 
@@ -136,10 +147,17 @@ public class BoardView extends JPanel implements MouseListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+
 		shiftingHorizontal = false;
 		shiftingVertical = false;
 
+		for (FieldView[] fva : fieldViews) {
+
+			for (FieldView fv : fva) {
+
+				fv.saveNewPos();
+			}
+		}
 	}
 
 }

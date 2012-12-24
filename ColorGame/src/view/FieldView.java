@@ -76,4 +76,9 @@ public class FieldView extends JPanel {
 		this.setBounds(newX, newY, oldWidth, oldHeight);
 	}
 
+	public void saveNewPos() {
+		
+		
+	}
+
 }
