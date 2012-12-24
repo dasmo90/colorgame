@@ -66,9 +66,16 @@ public class BoardView extends JPanel implements MouseListener,
 	private int oldPosX;
 	private int oldPosY;
 
+	private boolean shiftingVertical = false;
+	private boolean shiftingHorizontal = false;
+	
+	private boolean shiftingIndex;
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 
+		
+		
 		moveRow(0, arg0.getX() - oldPosX);
 
 	}
